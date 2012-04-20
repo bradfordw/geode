@@ -83,8 +83,8 @@ decode(GeoHash) ->
   decode(GeoHash, ?DEFAULT_COORDS, on).
 
 decode([], [[NLaH, NLaT], [NLoH,NLoT]], _) ->
-  Lats = [NLaH, NLaT, (NLaH+NLaT) / 2],
-  Lons = [NLoH,NLoT, (NLoH+NLoT) / 2],
+  Lats = lists:sum([NLaH, NLaT, (NLaH+NLaT) / 2]) / 3,
+  Lons = lists:sum([NLoH,NLoT, (NLoH+NLoT) / 2]) / 3,
   [{lat, Lats}, {lon, Lons}];
 decode([H|GeoHash], [Lats, Lons], Proc) ->
   ValidChr = string:str(?BASE32, [H]) - 1,
@@ -120,9 +120,7 @@ which_branch(_) -> odd.
 -ifdef(TEST).
 
 decode_test() ->
-  Expected = [
-    {lat,[38.8969998434186, 38.89700001105666, 38.89699992723763]},
-    {lon,[-77.03600004315376, -77.03599970787764, -77.0359998755157]}],
+  Expected = [{lat,38.89699992723763},{lon,-77.0359998755157}],
   Expected = decode("dqcjr0bp7n74"),
   ok.
 
