@@ -1,5 +1,5 @@
 # Geode
-## Geohash / proximity searches in pure, uncut Erlang
+## [Geohash](https://en.wikipedia.org/wiki/Geohash) / proximity searches in pure, uncut Erlang
 
 
 ### Usage
