@@ -29,6 +29,7 @@ geohash:adjacent("dqcjr0bp7n74", top).
 %% would yield "dqcjr0bp7n75" (which you may now decode to a lat/lon as well)
 
 ```
+Supported directions are top, left, right, bottom (may change in future to north, south, east, west)
 
 ### To Do
 
